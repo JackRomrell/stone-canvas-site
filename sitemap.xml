@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://stonecanvasdesign.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://stonecanvasdesign.com/services/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://stonecanvasdesign.com/our-work/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stonecanvasdesign.com/service-area/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stonecanvasdesign.com/about/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stonecanvasdesign.com/contact/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stonecanvasdesign.com/free-estimate/</loc>
+    <priority>1.0</priority>
+  </url>
+</urlset>
