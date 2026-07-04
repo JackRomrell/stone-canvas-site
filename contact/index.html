@@ -800,7 +800,35 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
 .ct-send-c h3{color:#fff}
 .ct-send-c p{color:rgba(255,255,255,.55)}
 
+
+/* ── HubSpot form shell styling ── */
+.hubspot-form-shell{width:100%;margin-top:28px}
+.hubspot-form-shell .hs-form,
+.hubspot-form-shell form{width:100%;max-width:100%;font-family:var(--fb,Inter,system-ui,sans-serif)!important}
+.hubspot-form-shell .hs-form-field{margin-bottom:18px}
+.hubspot-form-shell label,
+.hubspot-form-shell .hs-form-field>label{display:block;font-family:var(--fb,Inter,system-ui,sans-serif)!important;font-size:14px!important;font-weight:600!important;color:var(--td,#1F1C17)!important;margin-bottom:6px!important}
+.hubspot-form-shell input,
+.hubspot-form-shell textarea,
+.hubspot-form-shell select{width:100%!important;max-width:100%!important;min-height:44px!important;border:1.5px solid var(--cem,#C9BBA6)!important;border-radius:var(--rsm,6px)!important;padding:12px 14px!important;font-family:var(--fb,Inter,system-ui,sans-serif)!important;font-size:15px!important;background:#fff!important;color:var(--td,#1F1C17)!important;box-shadow:none!important}
+.hubspot-form-shell textarea{min-height:110px!important;resize:vertical!important}
+.hubspot-form-shell input:focus,
+.hubspot-form-shell textarea:focus,
+.hubspot-form-shell select:focus{outline:none!important;border-color:var(--coy,#745421)!important;box-shadow:0 0 0 2px rgba(116,84,33,.14)!important}
+.hubspot-form-shell .hs-button,
+.hubspot-form-shell input[type="submit"]{width:100%!important;background:var(--coy,#745421)!important;color:#fff!important;border:none!important;border-radius:var(--rsm,6px)!important;padding:14px 20px!important;font-family:var(--fb,Inter,system-ui,sans-serif)!important;font-size:15px!important;font-weight:700!important;cursor:pointer!important;transition:background .18s ease!important}
+.hubspot-form-shell .hs-button:hover,
+.hubspot-form-shell input[type="submit"]:hover{background:#5e4319!important}
+.hubspot-form-shell .hs-error-msgs{margin:6px 0 0!important;padding:0!important;list-style:none!important;color:#9b2c2c!important;font-size:13px!important}
+.hubspot-form-shell .hs-error-msgs label{color:#9b2c2c!important;font-size:13px!important;font-weight:500!important}
+.hubspot-form-shell .submitted-message{font-family:var(--fb,Inter,system-ui,sans-serif)!important;color:var(--td,#1F1C17)!important;font-size:16px!important;line-height:1.65!important;background:#fff!important;border:1px solid var(--cem,#C9BBA6)!important;border-radius:var(--rmd,10px)!important;padding:24px!important}
+.hubspot-form-shell .legal-consent-container,
+.hubspot-form-shell .hs-richtext{font-size:13px!important;color:var(--ts,#776852)!important;line-height:1.5!important}
+.hubspot-form-shell fieldset{max-width:100%!important}
+.hubspot-form-shell .input{margin-right:0!important}
+
 </style>
+<script src="https://js-na2.hsforms.net/forms/embed/246663445.js" defer></script>
 </head>
 <body>
 
@@ -894,87 +922,12 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
 
       <!-- FORM CARD -->
       <div class="ct-form-c">
-        <h3>Request a Free Floor Assessment</h3>
-        <p class="ct-form-intro">Use this form to send project details. Include photos of the concrete, cracks, joints, current coating, stains, or the area you want improved when you are ready.</p>
-
-        <!-- TODO: Connect this form to the live form handler before launch. -->
-        <form action="#" method="post" novalidate aria-label="Free Floor Assessment request form">
-          <fieldset style="border:none;padding:0;margin:0">
-            <legend class="sr-only">Your contact information</legend>
-            <div class="ct-field-row">
-              <div class="ct-field">
-                <label for="ct-name">Name <span aria-hidden="true">*</span></label>
-                <input type="text" id="ct-name" name="name" autocomplete="name" required placeholder="Your name">
-              </div>
-              <div class="ct-field">
-                <label for="ct-phone">Phone</label>
-                <input type="tel" id="ct-phone" name="phone" autocomplete="tel" placeholder="Your phone number">
-              </div>
-            </div>
-            <div class="ct-field">
-              <label for="ct-email">Email <span aria-hidden="true">*</span></label>
-              <input type="email" id="ct-email" name="email" autocomplete="email" required placeholder="Your email address">
-            </div>
-          </fieldset>
-
-          <fieldset style="border:none;padding:0;margin:0">
-            <legend class="sr-only">Project details</legend>
-            <div class="ct-field-row">
-              <div class="ct-field">
-                <label for="ct-location">Project location / city <span aria-hidden="true">*</span></label>
-                <input type="text" id="ct-location" name="location" required placeholder="City or area">
-              </div>
-              <div class="ct-field">
-                <label for="ct-sqft">Approximate square footage</label>
-                <input type="text" id="ct-sqft" name="sqft" placeholder="e.g. 500 sq ft">
-              </div>
-            </div>
-
-            <div class="ct-field">
-              <label for="ct-type">Project type</label>
-              <select id="ct-type" name="project_type">
-                <option value="">Select a service type</option>
-                <option value="garage">Garage Floor Coating</option>
-                <option value="polishing">Concrete Polishing</option>
-                <option value="grind-seal">Grind &amp; Seal</option>
-                <option value="sealing">Concrete Sealing</option>
-                <option value="staining">Concrete Staining</option>
-                <option value="repair">Surface Repair / Prep</option>
-                <option value="commercial">Shop or Commercial Floor</option>
-                <option value="unsure">Not Sure Yet</option>
-              </select>
-            </div>
-
-            <div class="ct-field">
-              <label for="ct-desc">Short project description</label>
-              <textarea id="ct-desc" name="description" rows="4" placeholder="Describe the floor, condition, what you are hoping to do, and any concerns you have."></textarea>
-            </div>
-          </fieldset>
-
-          <fieldset style="border:none;padding:0;margin:0">
-            <legend style="font-size:13px;font-weight:600;color:var(--td);margin-bottom:10px">Preferred contact method</legend>
-            <div class="ct-radio-gr" role="radiogroup" aria-label="Preferred contact method">
-              <label class="ct-radio-opt"><input type="radio" name="contact_method" value="phone"> Phone</label>
-              <label class="ct-radio-opt"><input type="radio" name="contact_method" value="email" checked> Email</label>
-              <label class="ct-radio-opt"><input type="radio" name="contact_method" value="text"> Text</label>
-            </div>
-          </fieldset>
-
-          <div class="ct-field" style="margin-top:18px">
-            <label for="ct-timeline">Timeline (optional)</label>
-            <select id="ct-timeline" name="timeline">
-              <option value="">Select a timeline</option>
-              <option value="asap">As soon as practical</option>
-              <option value="1-3mo">Within 1–3 months</option>
-              <option value="planning">Planning ahead</option>
-              <option value="unsure">Not sure yet</option>
-            </select>
-          </div>
-
-          <p class="ct-note">Fields marked with * are required. We will use this information only to respond to your request.</p>
-
-          <button type="submit" class="btn bp ct-submit">Request My Free Floor Assessment</button>
-        </form>
+        <h3>Contact Stone Canvas Design</h3>
+        <p class="ct-form-intro">Send a quick message about your concrete floor project, question, or service area request. For a detailed quote request, use the <a href="/free-estimate/" style="color:var(--coy);font-weight:600">Free Floor Assessment page</a>.</p>
+        <div class="hubspot-form-shell hubspot-contact-form">
+          <script src="https://js-na2.hsforms.net/forms/embed/246663445.js" defer></script>
+          <div class="hs-form-frame" data-region="na2" data-form-id="17f1e732-2ca6-465c-beb0-602cddd73c7c" data-portal-id="246663445"></div>
+        </div>
       </div>
 
       <!-- INFO CARD -->
