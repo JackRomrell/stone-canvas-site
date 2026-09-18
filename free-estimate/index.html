@@ -30,7 +30,7 @@
 
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
 :root{
   --coy:#745421;--coy2:#5e4319;--mud:#776852;--cem:#C9BBA6;
   --clay:#BAA07C;--sand:#F2F0EC;--chr:#191714;--chr2:#28251F;--chr3:#332F27;
@@ -825,6 +825,10 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
 .fe-hero-split{display:grid;grid-template-columns:1fr 480px;gap:48px;align-items:center;max-width:var(--mw);margin:0 auto}
 .fe-hero-split .fe-img-col{border-radius:var(--rlg) var(--rlg) 0 0;overflow:hidden;min-height:420px;background:var(--chr3)}
 .fe-hero-split .fe-img-col img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;margin:0;padding:0;border:0}
+/* Service-specific thumbnail strip: populated by assessment-context.js only
+   when a category has 2+ approved photos. Hidden by default. */
+.fe-img-strip{display:flex;gap:8px;margin-top:8px}
+.fe-img-strip img{flex:1;height:64px;object-fit:cover;border-radius:var(--rsm);display:block;border:1px solid rgba(255,255,255,.08)}
 @media(max-width:960px){
   .fe-hero-split{grid-template-columns:1fr;gap:28px}
   .fe-hero-split .fe-img-col{min-height:250px;border-radius:var(--rlg)}
@@ -926,6 +930,7 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
       </div>
       <h1 id="fe-h1">Request a Free Floor Assessment for <em>Your Concrete Floor.</em></h1>
       <p class="hsub">Not sure whether your floor needs a garage coating, polished concrete, grind and seal, staining, sealing, repair, or prep? We start by reviewing the concrete, how the space is used, and what result you want before recommending the right next step.</p>
+      <p id="fe-service-context" class="hero-note" hidden></p>
       <div class="hacts">
         <a href="#assessment-form" class="btn bp">Start My Free Floor Assessment</a>
       </div>
@@ -939,8 +944,11 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
         <span class="ti" role="listitem">Whitefish</span>
       </div>
     </div>
-    <div class="fe-img-col" role="img" aria-label="Commercial dealership shop bay with polished concrete floor.">
-      <img src="../assets/images/project-dealership-shop-bay-full-polish-01.jpg" alt="Commercial dealership shop bay with polished concrete floor." loading="eager">
+    <div class="fe-img-wrap">
+      <div class="fe-img-col" role="img" aria-label="Commercial dealership shop bay with polished concrete floor.">
+        <img src="../assets/images/project-dealership-shop-bay-full-polish-01.jpg" alt="Commercial dealership shop bay with polished concrete floor." loading="eager">
+      </div>
+      <div class="fe-img-strip" id="fe-img-strip" hidden></div>
     </div>
   </div>
 </section>
@@ -1344,5 +1352,7 @@ function tFaq(btn){
   if(el) el.textContent='© '+new Date().getFullYear()+' Stone Canvas Design. All rights reserved.';
 })();
 </script>
+<script src="/assets/js/site-data.js"></script>
+<script src="/assets/js/assessment-context.js" defer></script>
 </body>
 </html>

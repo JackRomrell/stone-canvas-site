@@ -22,7 +22,7 @@
 <style>
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
 :root{
   --coy:#745421;--coy2:#5e4319;--mud:#776852;--cem:#C9BBA6;
   --clay:#BAA07C;--sand:#F2F0EC;--chr:#191714;--chr2:#28251F;--chr3:#332F27;
@@ -37,6 +37,7 @@ a{color:inherit;text-decoration:none}
 ul,ol{list-style:none}
 button{font-family:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+:target{scroll-margin-top:90px}
 .lbl{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coy)}
 .lbl-l{color:var(--clay)}
 h1,h2{font-family:var(--fd);line-height:1.18}
@@ -676,7 +677,7 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
           <div class="cmp-row-grid"><span style="font-weight:600;color:var(--td);font-size:12px;letter-spacing:.03em">Look</span><span style="color:var(--ts)">Depends on final system applied after prep</span></div>
           <div class="cmp-row-grid"><span style="font-weight:600;color:var(--td);font-size:12px;letter-spacing:.03em">Maintenance</span><span style="color:var(--ts)">Depends on final system chosen after repair and prep</span></div>
         </div>
-        <a href="/free-estimate/" class="btn bp" style="text-align:center;margin-top:auto">Request a Floor Assessment</a>
+        <a href="/free-estimate/?service=surface-repair-prep" class="btn bp" style="text-align:center;margin-top:auto">Request a Floor Assessment</a>
       </div>
 
     </div>
@@ -706,7 +707,10 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
           <div class="psvc-tags"><span class="stg">Flake Epoxy</span><span class="stg">Roll-Out Epoxy</span><span class="stg">Garage Floors</span><span class="stg">Shop Floors</span><span class="stg">Durable Coating Systems</span><span class="stg">Flake Color Options</span></div>
         </div>
         <p class="psvc-best"><strong>Best for:</strong> Garages, shops, basements, storage areas, and workspaces.</p>
-        <a href="/free-estimate/" class="btn bp">Request Assessment</a>
+        <div class="ctar">
+          <a href="/free-estimate/?service=garage-floor-coatings" class="btn bp">Request Assessment</a>
+          <a href="/#color-chart" class="btn bg">View Color Options</a>
+        </div>
       </div>
     </article>
     <article class="service-card" id="concrete-polishing">
@@ -722,7 +726,7 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
           <div class="psvc-tags"><span class="stg">Full Exposure</span><span class="stg">Medium Exposure</span><span class="stg">Salt &amp; Pepper</span><span class="stg">Cream Polish</span><span class="stg">Concrete Sealing</span><span class="stg">Interior Polished Concrete</span></div>
         </div>
         <p class="psvc-best"><strong>Best for:</strong> Shops, showrooms, commercial spaces, modern interiors, and polished concrete floors.</p>
-        <a href="/free-estimate/" class="btn bp">Request Assessment</a>
+        <a href="/free-estimate/?service=concrete-polishing" class="btn bp">Request Assessment</a>
       </div>
     </article>
     <article class="service-card" id="grind-and-seal">
@@ -738,7 +742,7 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
           <div class="psvc-tags"><span class="stg">Enduring Gloss</span><span class="stg">Matte</span><span class="stg">F1 Finish</span><span class="stg">Natural Concrete Look</span><span class="stg">Practical Protection</span><span class="stg">Select Exterior Applications</span></div>
         </div>
         <p class="psvc-best"><strong>Best for:</strong> Utility spaces, shops, basements, natural concrete finishes, and practical floor protection.</p>
-        <a href="/free-estimate/" class="btn bp">Request Assessment</a>
+        <a href="/free-estimate/?service=grind-and-seal" class="btn bp">Request Assessment</a>
       </div>
     </article>
     </div>
@@ -800,7 +804,7 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
     </div>
 
     <div class="seccta">
-      <a href="/free-estimate/" class="btn bp">Request a Floor Assessment</a>
+      <a href="/free-estimate/?service=surface-repair-prep" class="btn bp">Request a Floor Assessment</a>
     </div>
   </div>
 </section>
@@ -849,7 +853,7 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
     </div>
 
     <div class="seccta">
-      <a href="/free-estimate/" class="btn bp">Talk Through Your Project</a>
+      <a href="/free-estimate/?service=concrete-staining-sealing" class="btn bp">Talk Through Your Project</a>
     </div>
   </div>
 </section>

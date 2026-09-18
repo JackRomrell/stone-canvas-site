@@ -26,7 +26,7 @@
 
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
 :root{
   --coy:#745421;--coy2:#5e4319;--mud:#776852;--cem:#C9BBA6;
   --clay:#BAA07C;--sand:#F2F0EC;--chr:#191714;--chr2:#28251F;--chr3:#332F27;
@@ -41,6 +41,7 @@ a{color:inherit;text-decoration:none}
 ul,ol{list-style:none}
 button{font-family:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+:target{scroll-margin-top:90px}
 .lbl{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coy)}
 .lbl-l{color:var(--clay)}
 h1,h2{font-family:var(--fd);line-height:1.18}
@@ -650,9 +651,15 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
 .proj-ba{padding:0}
 .proj-ba-wrap{display:flex;height:100%;width:100%}
 .proj-ba-half{flex:1;position:relative;min-width:0;overflow:hidden}
+.proj-ba-half img{width:100%;height:100%;object-fit:cover;display:block}
 .proj-ba-label{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;z-index:2;pointer-events:none}
-@media(max-width:480px){.proj-ba-wrap{flex-direction:column}.proj-ba-half{min-height:120px}}
+@media(max-width:480px){.proj-ba-wrap{flex-direction:column}.proj-ba-half{min-height:120px}.proj-ba .proj-row-badge{display:none}}
 .hvis img{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
+/* === Our Work: category groups (Browse by Project Type targets) === */
+.proj-cat-group{margin-bottom:40px}
+.proj-cat-group:last-child{margin-bottom:0}
+.proj-cat-heading{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coy);margin-bottom:14px}
+.proj-cat-note{font-size:13px;color:var(--ts);font-style:italic;margin-top:14px}
 
 /* Our Work: 2-col project grid responsive */
 @media(max-width:960px){.proj-gr{grid-template-columns:1fr!important}}
@@ -805,124 +812,197 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
 
 <hr class="rl">
 
-<!-- ═══ FILTER PILLS ═══ -->
+<!-- ═══ FILTER PILLS ═══
+     Every pill is a real <a href="#id"> pointing at a real .proj-cat-group
+     below, so jump-links work with no JS. assets/js/gallery-filter.js
+     progressively enhances clicks into a live filter. data-cat values are
+     the canonical category slugs shared with assets/js/site-data.js and
+     the ?service= param on the assessment page — keep them in sync when
+     adding a category. ═══ -->
 <section class="sec browse-section" style="background:#fff;padding-bottom:0" aria-labelledby="cat-h2">
   <div class="sec-i">
     <p class="lbl" style="margin-bottom:10px">Browse by Project Type</p>
     <h2 class="hl" id="cat-h2">Browse by Project Type</h2>
-    <p style="font-size:15px;color:var(--ts);margin-bottom:0">Project categories — select to jump to a type of work.</p>
+    <p style="font-size:15px;color:var(--ts);margin-bottom:0">Project categories — select to filter and jump to a type of work.</p>
     <div class="cat-pills" role="list" aria-label="Project categories">
-      <span class="cat-pill active" role="listitem">All</span>
-      <a href="#garage-floors" class="cat-pill" role="listitem">Garage Floor Coatings</a>
-      <a href="#polished-concrete" class="cat-pill" role="listitem">Concrete Polishing</a>
-      <a href="#grind-seal" class="cat-pill" role="listitem">Grind &amp; Seal</a>
-      <a href="#surface-repair" class="cat-pill" role="listitem">Surface Repair &amp; Prep</a>
-      <a href="#staining" class="cat-pill" role="listitem">Concrete Staining &amp; Sealing</a>
-      <a href="#commercial" class="cat-pill" role="listitem">Commercial Floors</a>
+      <a href="#proj-h2" class="cat-pill active" data-cat="all" role="listitem" aria-current="true">All</a>
+      <a href="#garage-floor-coatings" class="cat-pill" data-cat="garage-floor-coatings" role="listitem">Garage Floor Coatings</a>
+      <a href="#concrete-polishing" class="cat-pill" data-cat="concrete-polishing" role="listitem">Concrete Polishing</a>
+      <a href="#grind-and-seal" class="cat-pill" data-cat="grind-and-seal" role="listitem">Grind &amp; Seal</a>
+      <a href="#surface-repair-prep" class="cat-pill" data-cat="surface-repair-prep" role="listitem">Surface Repair &amp; Prep</a>
+      <a href="#concrete-staining-sealing" class="cat-pill" data-cat="concrete-staining-sealing" role="listitem">Concrete Staining &amp; Sealing</a>
+      <a href="#commercial-floors" class="cat-pill" data-cat="commercial-floors" role="listitem">Commercial Floors</a>
     </div>
   </div>
 </section>
 
-<!-- ═══ PROJECT GRID ═══ -->
+<!-- ═══ PROJECT GRID ═══
+     Grouped by category so pills can filter/jump to a real section. To add
+     a new project once the client sends photos: copy a .proj-row, update
+     the image/copy, and place it inside the matching .proj-cat-group (or
+     add a new group following the same id/data-cat pattern). ═══ -->
 <section class="sec" style="background:#fff" aria-labelledby="proj-h2">
   <div class="sec-i">
     <div style="text-align:center;max-width:860px;margin:0 auto 44px">
       <p class="lbl" style="margin-bottom:10px">Project Examples</p>
       <h2 class="hl" id="proj-h2">Project Examples</h2>
     </div>
-    <div class="proj-row-list">
-    <div class="proj-row">
-      <div class="proj-row-image">
-        <span class="proj-row-badge">Garage Floor Coating</span>
-        <img src="../assets/images/project-epoxy-flake-floor-big-sky-01.jpg" alt="Finished epoxy flake garage floor coating in Big Sky, Montana." loading="lazy">
-      </div>
-      <div class="proj-row-content">
-        <p class="lbl" style="margin-bottom:6px">Garage Floor Coating</p>
-        <h3>Epoxy Flake Garage Floor</h3>
-        <p>A finished epoxy flake garage floor with a clean, durable surface designed for easier maintenance and a more complete garage look.</p>
-        <p class="proj-bf"><strong>Best fit:</strong> Garages, shops, storage areas, and workspaces.</p>
-        <a href="/services/#garage-floor-coatings" class="btn bp">View Garage Floor Coatings</a>
-      </div>
-    </div>
-    <div class="proj-row">
-      <div class="proj-row-image">
-        <span class="proj-row-badge">Polished Concrete</span>
-        <img src="../assets/images/project-6-car-garage-full-polish-01.jpg" alt="Large residential garage with full polished concrete floor." loading="lazy">
-      </div>
-      <div class="proj-row-content">
-        <p class="lbl" style="margin-bottom:6px">Polished Concrete</p>
-        <h3>Six-Car Garage Full Polish</h3>
-        <p>A large residential garage with a full polished concrete finish, creating a refined surface with a clean reflective appearance.</p>
-        <p class="proj-bf"><strong>Best fit:</strong> Garages, showrooms, shops, and finished concrete spaces.</p>
-        <a href="/services/#concrete-polishing" class="btn bp">View Concrete Polishing</a>
+
+    <div class="proj-cat-group" id="garage-floor-coatings" data-cat="garage-floor-coatings">
+      <p class="proj-cat-heading">Garage Floor Coatings</p>
+      <div class="proj-row-list">
+        <div class="proj-row">
+          <div class="proj-row-image">
+            <span class="proj-row-badge">Garage Floor Coating</span>
+            <img src="../assets/images/project-epoxy-flake-floor-big-sky-01.jpg" alt="Finished epoxy flake garage floor coating in Big Sky, Montana." loading="lazy">
+          </div>
+          <div class="proj-row-content">
+            <p class="lbl" style="margin-bottom:6px">Garage Floor Coating</p>
+            <h3>Epoxy Flake Garage Floor</h3>
+            <p>A finished epoxy flake garage floor with a clean, durable surface designed for easier maintenance and a more complete garage look.</p>
+            <p class="proj-bf"><strong>Best fit:</strong> Garages, shops, storage areas, and workspaces.</p>
+            <a href="/services/#garage-floor-coatings" class="btn bp">View Garage Floor Coatings</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="proj-row">
-      <div class="proj-row-image">
-        <span class="proj-row-badge">Commercial Polished Concrete</span>
-        <img src="../assets/images/project-audi-dealership-full-polish-01.jpg" alt="Audi dealership service shop with polished concrete floor and automotive lifts." loading="lazy">
-      </div>
-      <div class="proj-row-content">
-        <p class="lbl" style="margin-bottom:6px">Commercial Polished Concrete</p>
-        <h3>Audi Dealership Full Polish</h3>
-        <p>A dealership service area with polished concrete suited for an active automotive workspace.</p>
-        <p class="proj-bf"><strong>Best fit:</strong> Dealerships, shops, commercial floors, and service bays.</p>
-        <a href="/services/#commercial-floors" class="btn bp">View Commercial Floors</a>
-      </div>
-    </div>
-    <div class="proj-row">
-      <div class="proj-row-image">
-        <span class="proj-row-badge">Commercial Shop Floor</span>
-        <img src="../assets/images/project-dealership-shop-bay-full-polish-01.jpg" alt="Commercial dealership shop bay with polished concrete floor." loading="lazy">
-      </div>
-      <div class="proj-row-content">
-        <p class="lbl" style="margin-bottom:6px">Commercial Shop Floor</p>
-        <h3>Dealership Shop Bay Polish</h3>
-        <p>A polished concrete shop bay with a brighter, cleaner floor finish for a large service space.</p>
-        <p class="proj-bf"><strong>Best fit:</strong> Service bays, shops, warehouses, and commercial work areas.</p>
-        <a href="/services/#commercial-floors" class="btn bp">View Commercial Floors</a>
+
+    <div class="proj-cat-group" id="concrete-polishing" data-cat="concrete-polishing">
+      <p class="proj-cat-heading">Concrete Polishing</p>
+      <div class="proj-row-list">
+        <div class="proj-row">
+          <div class="proj-row-image">
+            <span class="proj-row-badge">Polished Concrete</span>
+            <img src="../assets/images/project-6-car-garage-full-polish-01.jpg" alt="Large residential garage with full polished concrete floor." loading="lazy">
+          </div>
+          <div class="proj-row-content">
+            <p class="lbl" style="margin-bottom:6px">Polished Concrete</p>
+            <h3>Six-Car Garage Full Polish</h3>
+            <p>A large residential garage with a full polished concrete finish, creating a refined surface with a clean reflective appearance.</p>
+            <p class="proj-bf"><strong>Best fit:</strong> Garages, showrooms, shops, and finished concrete spaces.</p>
+            <a href="/services/#concrete-polishing" class="btn bp">View Concrete Polishing</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="proj-row">
-      <div class="proj-row-image">
-        <span class="proj-row-badge">Clean &amp; Seal</span>
-        <img src="../assets/images/project-dealership-shop-clean-seal-after-01.jpg" alt="Dealership shop concrete floor after clean and seal work." loading="lazy">
-      </div>
-      <div class="proj-row-content">
-        <p class="lbl" style="margin-bottom:6px">Clean &amp; Seal</p>
-        <h3>Dealership Shop Clean &amp; Seal</h3>
-        <p>A dealership shop floor after clean and seal work, improving the finished appearance and making the concrete easier to maintain.</p>
-        <p class="proj-bf"><strong>Best fit:</strong> Shops, utility floors, commercial spaces, and existing concrete surfaces.</p>
-        <a href="/services/#grind-and-seal" class="btn bp">View Grind &amp; Seal</a>
-      </div>
-    </div>
-    <div class="proj-row">
-      <div class="proj-row-image">
-        <span class="proj-row-badge">Crack Repair</span>
-        <img src="../assets/images/project-seattle-dealership-crack-repair-after-01.jpg" alt="Commercial dealership concrete surface after crack repair and prep work." loading="lazy">
-      </div>
-      <div class="proj-row-content">
-        <p class="lbl" style="margin-bottom:6px">Crack Repair</p>
-        <h3>Concrete Crack Repair After Prep</h3>
-        <p>A repaired concrete surface after crack repair and preparation work.</p>
-        <p class="proj-bf"><strong>Best fit:</strong> Commercial concrete, exterior slabs, shops, and floors needing repair before finishing.</p>
-        <a href="/services/#surface-repair" class="btn bp">View Surface Repair</a>
-      </div>
-    </div>
-    <div class="proj-row">
-      <div class="proj-row-image">
-        <span class="proj-row-badge">Specialty Concrete</span>
-        <img src="../assets/images/project-polishable-overlay-test-patch-after-01.jpg" alt="Polished concrete overlay test patch after full polish showing gloss and aggregate exposure." loading="lazy">
-      </div>
-      <div class="proj-row-content">
-        <p class="lbl" style="margin-bottom:6px">Specialty Concrete</p>
-        <h3>Polishable Overlay Test Patch</h3>
-        <p>A polished overlay test patch used to evaluate finish appearance, gloss, and surface response before larger specialty work.</p>
-        <p class="proj-bf"><strong>Best fit:</strong> Specialty floors, overlay evaluations, mockups, and finish testing.</p>
-        <a href="/services/#specialty-services" class="btn bp">View Specialty Services</a>
+
+    <div class="proj-cat-group" id="grind-and-seal" data-cat="grind-and-seal">
+      <p class="proj-cat-heading">Grind &amp; Seal</p>
+      <div class="proj-row-list">
+        <div class="proj-row">
+          <div class="proj-row-image proj-ba">
+            <span class="proj-row-badge">Before &amp; After — Clean &amp; Seal</span>
+            <div class="proj-ba-wrap">
+              <div class="proj-ba-half">
+                <span class="proj-ba-label">Before</span>
+                <img src="../assets/images/project-dealership-shop-clean-seal-before-01.jpg" alt="Dealership shop concrete floor before clean and seal work, showing stains and wear from daily use." loading="lazy">
+              </div>
+              <div class="proj-ba-half">
+                <span class="proj-ba-label">After</span>
+                <img src="../assets/images/project-dealership-shop-clean-seal-after-01.jpg" alt="Dealership shop concrete floor after clean and seal work." loading="lazy">
+              </div>
+            </div>
+          </div>
+          <div class="proj-row-content">
+            <p class="lbl" style="margin-bottom:6px">Clean &amp; Seal — Before &amp; After</p>
+            <h3>Dealership Shop Clean &amp; Seal</h3>
+            <p>A dealership shop floor before and after clean and seal work, improving the finished appearance and making the concrete easier to maintain.</p>
+            <p class="proj-bf"><strong>Best fit:</strong> Shops, utility floors, commercial spaces, and existing concrete surfaces.</p>
+            <a href="/services/#grind-and-seal" class="btn bp">View Grind &amp; Seal</a>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="proj-cat-group" id="surface-repair-prep" data-cat="surface-repair-prep">
+      <p class="proj-cat-heading">Surface Repair &amp; Prep</p>
+      <div class="proj-row-list">
+        <div class="proj-row">
+          <div class="proj-row-image proj-ba">
+            <span class="proj-row-badge">Before &amp; After — Crack Repair</span>
+            <div class="proj-ba-wrap">
+              <div class="proj-ba-half">
+                <span class="proj-ba-label">Before</span>
+                <img src="../assets/images/project-seattle-dealership-crack-repair-before-01.jpg" alt="Commercial parking lot concrete surface showing a cracked joint before repair and prep work." loading="lazy">
+              </div>
+              <div class="proj-ba-half">
+                <span class="proj-ba-label">After</span>
+                <img src="../assets/images/project-seattle-dealership-crack-repair-after-01.jpg" alt="Commercial dealership concrete surface after crack repair and prep work." loading="lazy">
+              </div>
+            </div>
+          </div>
+          <div class="proj-row-content">
+            <p class="lbl" style="margin-bottom:6px">Crack Repair — Before &amp; After</p>
+            <h3>Concrete Crack Repair After Prep</h3>
+            <p>A repaired concrete surface before and after crack repair and preparation work.</p>
+            <p class="proj-bf"><strong>Best fit:</strong> Commercial concrete, exterior slabs, shops, and floors needing repair before finishing.</p>
+            <a href="/services/#surface-repair" class="btn bp">View Surface Repair</a>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="proj-cat-group" id="concrete-staining-sealing" data-cat="concrete-staining-sealing">
+      <p class="proj-cat-heading">Concrete Staining &amp; Sealing</p>
+      <div class="proj-row-list">
+        <div class="proj-row">
+          <div class="proj-row-image proj-ba">
+            <span class="proj-row-badge">Before &amp; After — Polishable Overlay</span>
+            <div class="proj-ba-wrap">
+              <div class="proj-ba-half">
+                <span class="proj-ba-label">Before</span>
+                <img src="../assets/images/project-polishable-overlay-test-patch-before-01.jpg" alt="Polishable concrete overlay test patch freshly applied, before final polishing." loading="lazy">
+              </div>
+              <div class="proj-ba-half">
+                <span class="proj-ba-label">After</span>
+                <img src="../assets/images/project-polishable-overlay-test-patch-after-01.jpg" alt="Polished concrete overlay test patch after full polish showing gloss and aggregate exposure." loading="lazy">
+              </div>
+            </div>
+          </div>
+          <div class="proj-row-content">
+            <p class="lbl" style="margin-bottom:6px">Decorative &amp; Specialty — Before &amp; After</p>
+            <h3>Polishable Overlay Test Patch</h3>
+            <p>A polishable overlay test patch used to evaluate finish appearance, gloss, and surface response before larger decorative and specialty work.</p>
+            <p class="proj-bf"><strong>Best fit:</strong> Specialty floors, overlay evaluations, mockups, and finish testing.</p>
+            <a href="/services/#staining-sealing" class="btn bp">View Decorative &amp; Specialty</a>
+          </div>
+        </div>
+      </div>
+      <p class="proj-cat-note">Dedicated concrete stain project photos are being added as new work is completed.</p>
+    </div>
+
+    <div class="proj-cat-group" id="commercial-floors" data-cat="commercial-floors">
+      <p class="proj-cat-heading">Commercial Floors</p>
+      <div class="proj-row-list">
+        <div class="proj-row">
+          <div class="proj-row-image">
+            <span class="proj-row-badge">Commercial Polished Concrete</span>
+            <img src="../assets/images/project-audi-dealership-full-polish-01.jpg" alt="Audi dealership service shop with polished concrete floor and automotive lifts." loading="lazy">
+          </div>
+          <div class="proj-row-content">
+            <p class="lbl" style="margin-bottom:6px">Commercial Polished Concrete</p>
+            <h3>Audi Dealership Full Polish</h3>
+            <p>A dealership service area with polished concrete suited for an active automotive workspace.</p>
+            <p class="proj-bf"><strong>Best fit:</strong> Dealerships, shops, commercial floors, and service bays.</p>
+            <a href="/services/#concrete-polishing" class="btn bp">View Concrete Polishing</a>
+          </div>
+        </div>
+        <div class="proj-row">
+          <div class="proj-row-image">
+            <span class="proj-row-badge">Commercial Shop Floor</span>
+            <img src="../assets/images/project-dealership-shop-bay-full-polish-01.jpg" alt="Commercial dealership shop bay with polished concrete floor." loading="lazy">
+          </div>
+          <div class="proj-row-content">
+            <p class="lbl" style="margin-bottom:6px">Commercial Shop Floor</p>
+            <h3>Dealership Shop Bay Polish</h3>
+            <p>A polished concrete shop bay with a brighter, cleaner floor finish for a large service space.</p>
+            <p class="proj-bf"><strong>Best fit:</strong> Service bays, shops, warehouses, and commercial work areas.</p>
+            <a href="/services/#concrete-polishing" class="btn bp">View Concrete Polishing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="seccta"><a href="/free-estimate/" class="btn bp">Request a Free Floor Assessment</a></div>
   </div>
 </section>
@@ -1167,5 +1247,6 @@ function tFaq(btn){
   if(el) el.textContent='© '+new Date().getFullYear()+' Stone Canvas Design. All rights reserved.';
 })();
 </script>
+<script src="/assets/js/gallery-filter.js" defer></script>
 </body>
 </html>

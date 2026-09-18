@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
 :root{
   --coy:#745421;--coy2:#5e4319;--mud:#776852;--cem:#C9BBA6;
   --clay:#BAA07C;--sand:#F2F0EC;--chr:#191714;--chr2:#28251F;--chr3:#332F27;
@@ -36,6 +36,7 @@ a{color:inherit;text-decoration:none}
 ul,ol{list-style:none}
 button{font-family:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+:target{scroll-margin-top:90px}
 .lbl{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coy)}
 .lbl-l{color:var(--clay)}
 h1,h2{font-family:var(--fd);line-height:1.18}
@@ -580,7 +581,7 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
   </div>
 </section>
 
-<section class="sec fsec" aria-labelledby="flkh2">
+<section class="sec fsec" id="color-chart" aria-labelledby="flkh2">
   <div class="sec-i">
     <div style="text-align:center;max-width:860px;margin:0 auto 0">
       <p class="lbl" style="margin-bottom:10px">Garage &amp; Shop Floors</p>
@@ -598,7 +599,12 @@ main,section,header,footer,.sec,.sec-i,.hi,.hinn{max-width:100%}
       <div class="fc" role="listitem"><div class="fsw f8" aria-label="Obsidian flake color sample"><img src="assets/images/flake-obsidian-epoxy-floor-sample.png" alt="Obsidian epoxy flake floor color sample with dark gray, stone, cream, and black flakes." style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"></div><div class="fn">Obsidian</div><div class="fd">Near black</div></div>
       <div class="fc" role="listitem"><div class="fsw f9" aria-label="Pumice flake color sample"><img src="assets/images/flake-pumice-epoxy-floor-sample.png" alt="Pumice epoxy flake floor color sample with light gray, beige, cream, and muted stone-colored flakes." style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"></div><div class="fn">Pumice</div><div class="fd">Light cool gray</div></div>
     </div>
-    <div class="seccta"><a href="/services/#garage-floor-coatings" class="btn bp">Explore Garage Floor Coatings</a></div>
+    <div class="seccta">
+      <div class="ctar" style="justify-content:center">
+        <a href="/services/#garage-floor-coatings" class="btn bp">Explore Garage Floor Coatings</a>
+        <a href="/assets/downloads/stone-canvas-color-chart.pdf" class="btn bg">Download / Share Color Chart</a>
+      </div>
+    </div>
   </div>
 </section>
 
